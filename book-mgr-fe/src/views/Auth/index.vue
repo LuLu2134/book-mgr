@@ -2,8 +2,8 @@
 <div class="bgd">
     <div class="auth">
     <div class="title-info">
-        <img src="https://gitee.com/lulu20001105/image/raw/7ff89537966842e2f486464610a862aac57e841a/20211109163647.png" alt="">
-        <h2 class="title">图书管理系统 后台</h2>
+        <img src="https://gitee.com/lulu20001105/image/raw/32e836dc3825b5a82c61f75b9cd8f49c10da3fb1/%E6%89%8B%E6%8E%A8%E8%BD%A6.png" alt="">
+        <h2 class="title">商品管理系统 后台</h2>
     </div>
 
     <div class='form'>
@@ -41,7 +41,11 @@
         </a-tab-pane>
         <a-tab-pane key="2" tab="注册">
           <div class="item">
-            <a-input size="large" placeholder="账户">
+            <a-input 
+              size="large" 
+              placeholder="账户"
+              v-model:value="regForm.account"
+            >
               <template 
                 v-slot:prefix
               >
@@ -51,7 +55,11 @@
           </div>
 
           <div class="item">
-            <a-input size="large" placeholder="密码">
+            <a-input 
+              size="large"  
+              placeholder="密码"
+              v-model:value="regForm.password"
+            >
               <template 
               v-slot:prefix
               >
@@ -71,7 +79,11 @@
           </div>
 
           <div class="item">
-            <a-button size="large" type="primary">
+            <a-button 
+              @click="register" 
+              size="large" 
+              type="primary"
+            >
               注册
             </a-button>
           </div>
