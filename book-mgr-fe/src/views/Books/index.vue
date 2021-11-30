@@ -19,8 +19,10 @@
             </a-table>
 
         </a-card>
+
+        <add-one />
     </div>
-</template>
+</template> 
 
 <script src="./index.js"></script>
 
