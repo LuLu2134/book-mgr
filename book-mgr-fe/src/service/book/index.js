@@ -7,9 +7,18 @@ export const add = (form) => {
     );
 }; 
 
-// export const login = (account, password) => {
-//     return axios.post('http://localhost:3000/auth/login', {
-//         account,
-//         password,  
-//  });   
-// }; 
+export const list = (data) => {
+    return axios.get(
+        'http://localhost:3000/book/list', 
+        {
+            params: data,
+        },
+    );
+};
+
+// export const list = () => {
+//     return axios.get(
+//         'http://localhost:3000/book/list',
+//     );
+// };
+

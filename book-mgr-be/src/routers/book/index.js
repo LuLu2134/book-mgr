@@ -35,10 +35,36 @@ router.post('/add', async (ctx) => {
 });
 
 router.get('/list', async (ctx) => {
-    const list = await Book.find().exec();
+    // https://aa.cc.com/user?page=1
+    const {
+        page = 1,
+    } = ctx.query;
+
+    let = {
+        size = 10,
+    } = ctx.query;
+
+    size = Number(size);
+
+
+
+
+    
+    const list = await Book
+        .find()
+        .skip((page - 1) * size)
+        .limit(size)
+        .exec();
+
+    const total = await Book.countDocuments();    
 
     ctx.body = {
-        data: list,
+        data: {
+            total,
+            list,
+            page,
+            size,
+        },
         code: 1,
         msg: '获取列表成功',
     };

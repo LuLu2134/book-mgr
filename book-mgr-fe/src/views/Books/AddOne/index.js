@@ -12,7 +12,11 @@ const defaultFormData = {
 };
 
 export default  defineComponent ({
-    setup() {
+    props: {
+        show: Boolean,
+    },
+    setup(props, context) {
+        console.log(props);
         const addForm = reactive(clone(defaultFormData));
 
         const submit = async () => {
@@ -27,9 +31,15 @@ export default  defineComponent ({
                 });
         };
 
+        const close = () => {
+            context.emit('update:show', false);
+        };
+
         return {
             addForm,
             submit,
+            props,
+            close,
         };
     },
 });
