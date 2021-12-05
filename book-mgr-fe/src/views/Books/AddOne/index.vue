@@ -11,7 +11,7 @@
                     <a-input v-model:value="addForm.name"/>
                 </a-form-item>
                 <a-form-item label="价格">
-                    <a-input-number v-model:value="addForm.price" :min="0" :max="99999999" />
+                    <a-input-number v-model:value="addForm.price" :min="0" :max="9999" />
                 </a-form-item>
                 <a-form-item label="供应商">
                     <a-input v-model:value="addForm.author"/>
@@ -21,6 +21,9 @@
                 </a-form-item>
                 <a-form-item label="分类">
                     <a-input v-model:value="addForm.classify"/>
+                </a-form-item>
+                <a-form-item label="库存">
+                    <a-input v-model:value="addForm.count"/>
                 </a-form-item>
             </a-form>
         </a-modal> 

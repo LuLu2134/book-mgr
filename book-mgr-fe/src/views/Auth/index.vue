@@ -24,7 +24,7 @@
           </div>
 
           <div class="item">
-            <a-input 
+            <a-input-password 
               size="large" 
               placeholder="密码"
               v-model:value="loginForm.password"
@@ -34,7 +34,7 @@
               >
               <UnlockOutlined />
               </template>
-            </a-input>
+            </a-input-password>
           </div>
 
           <div class="item">
@@ -67,7 +67,7 @@
           </div>
 
           <div class="item">
-            <a-input 
+            <a-input-password 
               size="large"  
               placeholder="密码"
               v-model:value="regForm.password"
@@ -77,7 +77,7 @@
               >
               <UnlockOutlined />
               </template>
-            </a-input>
+            </a-input-password> 
           </div>
 
           <div class="item">

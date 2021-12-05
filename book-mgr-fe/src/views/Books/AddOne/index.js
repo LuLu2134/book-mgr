@@ -9,6 +9,7 @@ const defaultFormData = {
     author: '',
     publishDate: 0,
     classify: '',
+    count: '',
 };
 
 export default  defineComponent ({
@@ -16,7 +17,6 @@ export default  defineComponent ({
         show: Boolean,
     },
     setup(props, context) {
-        console.log(props);
         const addForm = reactive(clone(defaultFormData));
 
         const submit = async () => {
