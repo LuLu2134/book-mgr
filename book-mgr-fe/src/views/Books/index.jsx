@@ -3,10 +3,12 @@ import { book } from '@/service';
 import { message, Modal, Input } from 'ant-design-vue';
 import { result, formatTimestamp } from '@/helpers/utils';
 import AddOne from './AddOne/index.vue'; 
+import Update from './Update/index.vue';
 
 export default defineComponent ({
     components: {
         AddOne,
+        Update,
     },
     setup() {
         const columns = [
@@ -48,11 +50,13 @@ export default defineComponent ({
         ];
 
         const show = ref(false);
+        const showUpdateModal = ref(false);
         const list = ref([]);
         const total = ref(0);
         const curPage = ref(1);
         const keyword = ref('');
         const isSearch = ref(false);
+        const curEditBook = ref({});
 
         //获取书籍列表
         const getList = async () => {
@@ -160,12 +164,21 @@ export default defineComponent ({
                             if (one){
                                 one.count = one.count + num;
 
-                                message.success(`成功${word} ${Math.abs(num)} 本书`)
+                                message.success(`成功${word} ${Math.abs(num)} 件`)
                             }
                         });
                 },
             });
         };
+
+        const update = ({ record }) => {
+            showUpdateModal.value = true;
+            curEditBook.value = record;
+        };
+
+        const updateCurBook = (newData) => {
+            Object.assign(curEditBook.value, newData);
+        };  
 
         return {
             columns,
@@ -181,6 +194,10 @@ export default defineComponent ({
             isSearch,
             remove,
             updateCount,
+            showUpdateModal,
+            update,
+            curEditBook,
+            updateCurBook,
         };
     },
 });

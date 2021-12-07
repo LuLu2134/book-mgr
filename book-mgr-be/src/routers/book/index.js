@@ -142,7 +142,6 @@ router.post('/update/count', async (ctx) => {
         num = -Math.abs(num);
     }
 
-
     book.count = book.count + Number(num);
 
     if (book.count < 0) {
@@ -160,6 +159,44 @@ router.post('/update/count', async (ctx) => {
         code: 1,
         msg: '操作成功',
     };
+});
+
+router.post('/update', async (ctx) => {
+    const {
+        id,
+        ...others 
+    } = ctx.request.body;
+
+    const one = await Book.findOne({
+        _id: id,
+    }).exec();
+
+    // 没有找到书
+    if (!one) {
+        ctx.body = {
+            msg: '没有找到商品',
+            code: 0,
+        }
+        return;
+    }
+
+    const newQuery = {};
+
+    Object.entries(others).forEach(([key, value]) => {
+        if (value) {
+            newQuery[key] = value;
+        }
+    });
+
+    Object.assign(one, newQuery);
+
+    const res = await one.save();
+
+    ctx.body = {
+        data: res,
+        code: 1,
+        msg: '保存成功',
+    }
 });
 
 module.exports = router;

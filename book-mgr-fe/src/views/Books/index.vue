@@ -4,7 +4,6 @@
             <h2>商品列表</h2>
 
             <a-divider />
-
             <space-between>
                 <div class="search">
                     <a-input-search 
@@ -39,6 +38,8 @@
                 </template>
            
                 <template #actions="record">
+                    <a href="javascript:;" @click="update(record)">编辑</a>
+                    &nbsp;
                     <a href="javascript:;" @click="remove(record)">删除</a>
                 </template>
             </a-table>
@@ -55,6 +56,12 @@
 
         <add-one 
             v-model:show="show"
+        />
+
+        <update 
+            v-model:show="showUpdateModal"
+            :book="curEditBook"
+            @update="updateCurBook"
         />
     </div>
 </template> 
