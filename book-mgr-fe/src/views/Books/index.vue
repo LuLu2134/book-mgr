@@ -5,6 +5,7 @@
 
             <a-divider />
             <space-between>
+                
                 <div class="search">
                     <a-input-search 
                         placeholder="根据商品名搜索" 
@@ -38,6 +39,8 @@
                 </template>
            
                 <template #actions="record">
+                    <a href="javascript:;" @click="toDetail(record)">详情</a>
+                    &nbsp;
                     <a href="javascript:;" @click="update(record)">编辑</a>
                     &nbsp;
                     <a href="javascript:;" @click="remove(record)">删除</a>
